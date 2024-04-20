@@ -1,0 +1,1 @@
+create database nogotok_db;

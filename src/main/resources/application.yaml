@@ -1,0 +1,27 @@
+spring:
+
+  application:
+    name: NogotokKZ
+
+  liquibase:
+    change-log: classpath:/db/changelog/changelog.sql
+    enabled: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:15432/nogotok_db
+    username: postgres
+    password: admin
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      maxLifetime: 7200000
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+
+server:
+  port: 8081
