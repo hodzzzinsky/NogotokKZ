@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15"
+    "@mui/material": "^5.15.15",
+    "prop-types": "^15.8.1"
   }
 }
