@@ -30,9 +30,32 @@ export function ImageSlider({imageSource}: ImageSliderProps) {
             margin: '0 auto',
             position: 'relative',
         }}>
-            <img className='slidedImage' src={imageSource[imageIndex]} alt="name"/>
-            <button onClick={showNext} className='but' style={{ right: 0}}>➡️</button>
-            <button onClick={showPrev} className='but' style={{ left: 0}}>⬅️</button>
+            <div style={{width: '100%', height: '100%', overflow: 'hidden', display: 'flex'}}>
+                {imageSource.map(src => (
+                    <img key={src} className='slidedImage' src={src} alt="name" style={{
+                        translate: `${-100 * imageIndex}%`
+                    }}/>
+                ))}
+            </div>
+            <button onClick={showNext} className='but' style={{right: 0}}>➡️</button>
+            <button onClick={showPrev} className='but' style={{left: 0}}>⬅️</button>
+            <div style={{
+                position: 'absolute',
+                bottom: '.5rem',
+                left: '50%',
+                translate: '-50%',
+                display: 'flex',
+                gap: '.25rem'
+            }}>
+                {imageSource.map((_, index) => (
+                        <button className='slider-but-dot' onClick={
+                            () => setImageIndex(index)}>
+                            {index === imageIndex ? '💖' : '❤️'}
+                        </button>
+                    )
+                )}
+            </div>
         </div>
+
     )
 }
