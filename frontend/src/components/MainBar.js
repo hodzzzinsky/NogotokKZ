@@ -21,17 +21,31 @@ import '../components/MainBar.css';
 
 const drawerWidth = 240;
 const navItems = ['О нас', 'Акции', 'Наши работы', 'Прайс', 'Франшиза'];
+const itemData = [
+    {
+        address : 'blabla d 245 k23',
+        phone: '+777777771',
+        instagram: '@GlkjdfP_df'
+    },
+    {
+        address : 'blabla d 245 k23',
+        phone: '+777777771',
+        instagram: '@GlkjdfP_df'
+    } ]; //брать в будующем из бд
 
 function DrawerAppBar(props) {
     const {window} = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
+    const phoneNumber = process.env.REACT_APP_PHONE_NUMBER
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
 
+
+
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{textAlign: 'center'}}>
+        <Box onClick={handleDrawerToggle}
+             sx={{textAlign: 'center'}}>
             <Typography variant="h6" sx={{my: 2}}>
                 MUI
             </Typography>
@@ -45,9 +59,25 @@ function DrawerAppBar(props) {
                     </ListItem>
                 ))}
             </List>
-            <List>
-                +7 777 777 77 77
-            </List>
+
+            <Box sx={{
+                textAlign: 'center',
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                padding: 2,
+
+            }}>
+                +7 777 777 77 77<br/>
+                <div style={{marginTop: '15px'}}>
+                    <Button sx={{color: '#939569'}}><TelegramIcon/></Button>
+                    <Button sx={{color: '#939569'}}><InstagramIcon/></Button>
+                    <Button sx={{color: '#939569'}}><WhatsAppIcon/></Button>
+                </div>
+            </Box>
+
+
         </Box>
     );
 
@@ -74,7 +104,7 @@ function DrawerAppBar(props) {
                     >
                         Nogotok KZ
                     </Typography>
-                    <List sx={{display: {xs: 'none', sm: 'block'}}}>
+                    <List sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}>
                         {navItems.map((item) => (
                             <Button key={item} sx={{color: '#fff', fontSize: '10px'}}>
                                 {item}
@@ -82,14 +112,12 @@ function DrawerAppBar(props) {
                         ))}
                     </List>
                     <Box>
-                        <Typography>
-                            <List>
-                                +7 777 777 77 77
-                                <TelegramIcon/>
-                                <InstagramIcon/>
-                                <WhatsAppIcon/>
-                            </List>
-                        </Typography>
+                        <List sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}>
+                            +7 777 777 77 77 {/*вынести в переменную возможно реакт пока не видет  */}
+                            <IconButton sx={{color: '#fff'}}><TelegramIcon fontSize='small'/></IconButton>
+                            <IconButton sx={{color: '#fff'}}><InstagramIcon fontSize='small'/></IconButton>
+                            <IconButton sx={{color: '#fff'}}><WhatsAppIcon fontSize='small'/></IconButton>
+                        </List>
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -110,42 +138,68 @@ function DrawerAppBar(props) {
                     {drawer}
                 </Drawer>
             </nav>
-            <Box component="main" sx={{p: 3}}>
+            <Box component="main" sx={{ margin: 'auto'}}>
                 <Toolbar/>
-                <Typography>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
-                    fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
-                    aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
-                    cum quibusdam sed quae, accusantium et aperiam? Quod itaque exercitationem,
-                    at ab sequi qui modi delectus quia corrupti alias distinctio nostrum.
-                    Minima ex dolor modi inventore sapiente necessitatibus aliquam fuga et. Sed
-                    numquam quibusdam at officia sapiente porro maxime corrupti perspiciatis
-                    asperiores, exercitationem eius nostrum consequuntur iure aliquam itaque,
-                    assumenda et! Quibusdam temporibus beatae doloremque voluptatum doloribus
-                    soluta accusamus porro reprehenderit eos inventore facere, fugit, molestiae
-                    ab officiis illo voluptates recusandae. Vel dolor nobis eius, ratione atque
-                    soluta, aliquam fugit qui iste architecto perspiciatis. Nobis, voluptatem!
-                    Cumque, eligendi unde aliquid minus quis sit debitis obcaecati error,
-                    delectus quo eius exercitationem tempore. Delectus sapiente, provident
-                    corporis dolorum quibusdam aut beatae repellendus est labore quisquam
-                    praesentium repudiandae non vel laboriosam quo ab perferendis velit ipsa
-                    deleniti modi! Ipsam, illo quod. Nesciunt commodi nihil corrupti cum non
-                    fugiat praesentium doloremque architecto laborum aliquid. Quae, maxime
-                    recusandae? Eveniet dolore molestiae dicta blanditiis est expedita eius
-                    debitis cupiditate porro sed aspernatur quidem, repellat nihil quasi
-                    praesentium quia eos, quibusdam provident. Incidunt tempore vel placeat
-                    voluptate iure labore, repellendus beatae quia unde est aliquid dolor
-                    molestias libero. Reiciendis similique exercitationem consequatur, nobis
-                    placeat illo laudantium! Enim perferendis nulla soluta magni error,
-                    provident repellat similique cupiditate ipsam, et tempore cumque quod! Qui,
-                    iure suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
-                    Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore commodi
-                    reprehenderit rerum reiciendis! Quidem alias repudiandae eaque eveniet
-                    cumque nihil aliquam in expedita, impedit quas ipsum nesciunt ipsa ullam
-                    consequuntur dignissimos numquam at nisi porro a, quaerat rem repellendus.
-                    Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
-                    dolores sunt inventore perferendis, aut sapiente modi nesciunt.
-                </Typography>
+                <Box>
+                    <img style={{
+                        width: '100%',
+                        height: '550px',
+                        objectFit: 'cover',
+                        overflow: 'hidden',
+                        p: 0
+                    }}
+                         src="https://photo-cdn2.icons8.com/GU3GVkXyR8gZBEfXb2JoThawSbPnCLUoTn7lR8DDlGM/rs:fit:1608:1072/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi8wMDdiNzE3YzZk/MmY0MGUzOGM0YzY4/YmM3ZTRkOWUyMi5q/cGc.jpg"
+                         className="App-logo" alt="logo"/>
+                    <img name='logo1'
+                         style={{
+                             position: 'absolute',
+                             top: '20%',
+                             left: '50%',
+                             transform: 'translate(-50%, -50%)',
+                             width: '200px',
+                             height: '200px',
+                             objectFit: 'cover',
+                             overflow: 'hidden',
+                             p: 0,
+                         }}
+                         src={process.env.PUBLIC_URL + '/logoN.png'} className="App-logo" alt="logo"/>
+                    <Button sx={{
+                        position: 'absolute',
+                        top: '40%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        overflow: 'hidden',
+                        p: 0
+                    }} variant="contained" size="medium">Онлайн запись</Button>
+                </Box>
+
+
+                <Box sx={{ margin: 'auto', width: '50%' }}>
+
+                        <img
+                            name='logo1'
+                            style={{
+                                height: 200,
+                                width: 200,
+                                objectFit: 'cover',
+                            }}
+                            src={process.env.PUBLIC_URL + '/logoN.png'}
+                            className="App-logo"
+                            alt="logo"
+                        />
+                        <div>
+                            <h3>O нас</h3>
+                            <Typography>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент мог насладиться моментом ухода за собой 💃.</Typography>
+                            <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
+                            <Typography>У нас работают опытные мастера маникюра и визажисты, которые следят за последними тенденциями в индустрии красоты 💅.</Typography>
+                            <h5 style={{paddingTop: '10px'}}>Наши услуги</h5>
+                            <Typography>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский, аппаратный маникюр, дизайн ногтей и профессиональный макияж.</Typography>
+                        </div>
+                </Box>
+                {/*филиалы*/}
+                <Box>
+
+                </Box>
             </Box>
         </Box>
     );
