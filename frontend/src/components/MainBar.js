@@ -38,7 +38,11 @@ const img1 = process.env.PUBLIC_URL + '/logoN.png'
 const img2 = process.env.PUBLIC_URL + '/logo512.png'
 const img3 = process.env.PUBLIC_URL + '/logo192.png'
 
-const IMAGES = [img1, img2, img3];
+const IMAGES = [
+    { src: img1, alt: 'img1'},
+    { src: img2, alt: 'img2'},
+    { src: img3, alt: 'img3'}
+];
 
 function DrawerAppBar(props) {
     const {window} = props;
@@ -214,7 +218,7 @@ function DrawerAppBar(props) {
                 <Box>
                     <div style={{flexDirection: 'row'}}>
                         карусель с картинками филиала
-                        <ImageSlider imageSource={IMAGES} />
+                        <ImageSlider images={IMAGES} />
                         инфа о филиале
                     </div>
                 </Box>
