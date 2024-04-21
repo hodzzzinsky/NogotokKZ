@@ -17,7 +17,8 @@ import Button from '@mui/material/Button';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import '../components/MainBar.css';
+import './MainBar.css';
+import {ImageSlider} from "./ImageSlider.tsx";
 
 const drawerWidth = 240;
 const navItems = ['О нас', 'Акции', 'Наши работы', 'Прайс', 'Франшиза'];
@@ -32,6 +33,12 @@ const itemData = [
         phone: '+777777771',
         instagram: '@GlkjdfP_df'
     } ]; //брать в будующем из бд
+
+const img1 = process.env.PUBLIC_URL + '/logoN.png'
+const img2 = process.env.PUBLIC_URL + '/logo512.png'
+const img3 = process.env.PUBLIC_URL + '/logo192.png'
+
+const IMAGES = [img1, img2, img3];
 
 function DrawerAppBar(props) {
     const {window} = props;
@@ -196,10 +203,39 @@ function DrawerAppBar(props) {
                             <Typography>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский, аппаратный маникюр, дизайн ногтей и профессиональный макияж.</Typography>
                         </div>
                 </Box>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
                 {/*филиалы*/}
                 <Box>
-
+                    <div style={{flexDirection: 'row'}}>
+                        карусель с картинками филиала
+                        <ImageSlider imageSource={IMAGES} />
+                        инфа о филиале
+                    </div>
                 </Box>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                Наши работы
+                высококласные и тд и тп
+                List image
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                Наши самые выгодные
+                специальные предложения:
+                Абонементы:
             </Box>
         </Box>
     );
