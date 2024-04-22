@@ -19,29 +19,36 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import './MainBar.css';
 import {ImageSlider} from "./ImageSlider.tsx";
+import Stack from '@mui/material/Stack';
 
 const drawerWidth = 240;
-const navItems = ['О нас', 'Акции', 'Наши работы', 'Прайс', 'Франшиза'];
+const navItems = [
+    {name: 'О нас', ref: 'about_us'},
+    {name: 'Акции', ref: ''},
+    {name: 'Наши работы', ref: ''},
+    {name: 'Прайс', ref: ''},
+    {name: 'Франшиза', ref: ''}
+];
 const itemData = [
     {
-        address : 'blabla d 245 k23',
+        address: 'ул Пушкина д Колотушкина',
         phone: '+777777771',
-        instagram: '@GlkjdfP_df'
+        instagram: '@LizDoesBiz'
     },
     {
-        address : 'blabla d 245 k23',
+        address: 'ул Печали д Грусь',
         phone: '+777777771',
-        instagram: '@GlkjdfP_df'
-    } ]; //брать в будующем из бд
+        instagram: '@JamiesHotSauce'
+    }]; //брать в будующем из бд
 
-const img1 = process.env.PUBLIC_URL + '/logoN.png'
-const img2 = process.env.PUBLIC_URL + '/logo512.png'
-const img3 = process.env.PUBLIC_URL + '/logo192.png'
+const img1 = 'https://i.pinimg.com/564x/ec/99/be/ec99bee494baf10caddd60c4b87f9318.jpg'
+const img2 = 'https://i.pinimg.com/564x/19/29/61/1929613ee4049744daa6f6acffb5d99d.jpg'
+const img3 = 'https://i.pinimg.com/564x/ff/ca/18/ffca18839f5ab8995e25f08bbb472235.jpg'
 
 const IMAGES = [
-    { src: img1, alt: 'img1'},
-    { src: img2, alt: 'img2'},
-    { src: img3, alt: 'img3'}
+    {src: img1, alt: 'img1'},
+    {src: img2, alt: 'img2'},
+    {src: img3, alt: 'img3'}
 ];
 
 function DrawerAppBar(props) {
@@ -53,7 +60,6 @@ function DrawerAppBar(props) {
     };
 
 
-
     const drawer = (
         <Box onClick={handleDrawerToggle}
              sx={{textAlign: 'center'}}>
@@ -62,10 +68,10 @@ function DrawerAppBar(props) {
             </Typography>
             <Divider/>
             <List>
-                {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
+                {navItems.map(({name, ref}) => (
+                    <ListItem key={name} disablePadding>
                         <ListItemButton sx={{textAlign: 'center'}}>
-                            <ListItemText primary={item}/>
+                            <ListItemText  primary={name}/>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -97,7 +103,7 @@ function DrawerAppBar(props) {
     return (
         <Box sx={{display: 'flex'}}>
             <CssBaseline/>
-            <AppBar component="nav" className="nav-main">
+            <AppBar component="nav" className="nav-main" sx={{backgroundColor: '#989a6d'}}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -116,9 +122,9 @@ function DrawerAppBar(props) {
                         Nogotok KZ
                     </Typography>
                     <List sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{color: '#fff', fontSize: '10px'}}>
-                                {item}
+                        {navItems.map(({name, ref}) => (
+                            <Button href={`#${ref}`} key={name} sx={{color: '#fff', fontSize: '10px'}}>
+                                {name}
                             </Button>
                         ))}
                     </List>
@@ -149,7 +155,7 @@ function DrawerAppBar(props) {
                     {drawer}
                 </Drawer>
             </nav>
-            <Box component="main" sx={{ margin: 'auto'}}>
+            <Box component="main" sx={{margin: 'auto'}}>
                 <Toolbar/>
                 <Box>
                     <img style={{
@@ -185,27 +191,30 @@ function DrawerAppBar(props) {
                 </Box>
 
 
-                <Box sx={{ margin: 'auto', width: '50%' }}>
+                <Box sx={{margin: 'auto', width: '50%'}}>
 
-                        <img
-                            name='logo1'
-                            style={{
-                                height: 200,
-                                width: 200,
-                                objectFit: 'cover',
-                            }}
-                            src={process.env.PUBLIC_URL + '/logoN.png'}
-                            className="App-logo"
-                            alt="logo"
-                        />
-                        <div>
-                            <h3>O нас</h3>
-                            <Typography>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент мог насладиться моментом ухода за собой 💃.</Typography>
-                            <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
-                            <Typography>У нас работают опытные мастера маникюра и визажисты, которые следят за последними тенденциями в индустрии красоты 💅.</Typography>
-                            <h5 style={{paddingTop: '10px'}}>Наши услуги</h5>
-                            <Typography>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский, аппаратный маникюр, дизайн ногтей и профессиональный макияж.</Typography>
-                        </div>
+                    <img
+                        name='logo1'
+                        style={{
+                            height: 200,
+                            width: 200,
+                            objectFit: 'cover',
+                        }}
+                        src={process.env.PUBLIC_URL + '/logoN.png'}
+                        className="App-logo"
+                        alt="logo"
+                    />
+                    <div>
+                        <h3 style={{paddingTop: '5rem'}} id='about_us'>O нас</h3>
+                        <Typography>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент
+                            мог насладиться моментом ухода за собой 💃.</Typography>
+                        <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
+                        <Typography>У нас работают опытные мастера маникюра и визажисты, которые следят за последними
+                            тенденциями в индустрии красоты 💅.</Typography>
+                        <h5 style={{paddingTop: '10px'}}>Наши услуги</h5>
+                        <Typography>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский,
+                            аппаратный маникюр, дизайн ногтей и профессиональный макияж.</Typography>
+                    </div>
                 </Box>
                 <br/>
                 <br/>
@@ -215,12 +224,21 @@ function DrawerAppBar(props) {
                 <br/>
 
                 {/*филиалы*/}
-                <Box>
-                    <div style={{flexDirection: 'row'}}>
-                        карусель с картинками филиала
-                        <ImageSlider images={IMAGES} />
-                        инфа о филиале
-                    </div>
+                <Box className='places'>
+                    <Stack
+                        direction={{xs: 'column', sm: 'row'}}
+                        spacing={{xs: 1, sm: 2, md: 4}}
+                    >
+                        <ImageSlider images={IMAGES}/>
+                        <div className='place-text'>
+                            <p className='place-text-address'>ул. Красная Пресня 13</p>
+                            <p className='place-text-phone'>Телефон: +77777777777</p>
+                            <p className='place-text-inst'>Инстаграм: @LizDoesBiz</p>
+                            <Button variant='contained' >Записаться</Button>
+                        </div>
+                    </Stack>
+
+
                 </Box>
                 <br/>
                 <br/>

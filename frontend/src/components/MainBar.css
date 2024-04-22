@@ -1,4 +1,30 @@
-.nav-main {
-    background-color: #939569;
+.places > * {
+    display: flex;
+    padding-top: 5rem;
+}
+
+.place-text {
+    padding-left: 3rem;
+    height: 35rem;
+    width: 15rem;
+    justify-content: center;
+}
+.place-text p {
+    text-align: left;
+}
+.place-text-address {
+    text-align: left;
+    font-weight: bold;
+
+}
+
+.place-text-phone {
+    text-align: left;
+
+}
+
+.place-text-inst {
+    text-align: left;
+
 }
 

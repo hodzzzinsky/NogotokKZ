@@ -26,9 +26,9 @@ export function ImageSlider({images}: ImageSliderProps) {
     }
 
     return (
-        <div style={{
-            width: '100%',
-            height: '100%',
+        <div className="main-box" style={{
+            width: '25rem',
+            height: '35rem',
             aspectRatio: '10 / 6',
             margin: '0 auto',
             position: 'relative',
