@@ -46,22 +46,23 @@ export function ImageSlider({images}: ImageSliderProps) {
                     }}/>
                 ))}
             </div>
-            <button onClick={showNext} className='but' style={{right: 0}} aria-label='View next image'>➡️</button>
-            <button onClick={showPrev} className='but' style={{left: 0}} aria-label='View previous image'>⬅️</button>
+            {/*<button onClick={showNext} className='but' style={{right: 0}} aria-label='View next image'>➡️</button>*/}
+            {/*<button onClick={showPrev} className='but' style={{left: 0}} aria-label='View previous image'>⬅️</button>*/}
             <div style={{
                 position: 'absolute',
-                bottom: '.5rem',
+                bottom: '-3.5rem',
                 left: '50%',
                 translate: '-50%',
                 display: 'flex',
                 gap: '.25rem'
             }}>
-                {images.map((_, index) => (
+                {images.map(({src}, index ) => (
                         <button className='slider-but-dot'
                                 aria-label={`View image ${index}`}
                                 onClick={
                             () => setImageIndex(index)}>
-                            {index === imageIndex ? '💖' : '❤️'}
+                            {/*{index === imageIndex ? '💖' : '❤️'}*/}
+                            <img src={src} alt={'image'}/>
                         </button>
                     )
                 )}

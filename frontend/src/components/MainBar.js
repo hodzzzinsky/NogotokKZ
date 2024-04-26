@@ -19,13 +19,13 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import './MainBar.css';
 import {ImageSlider} from "./ImageSlider.tsx";
-import Stack from '@mui/material/Stack';
+import {ImageList, ImageListItem} from "@mui/material";
 
 const drawerWidth = 240;
 const navItems = [
     {name: 'О нас', ref: 'about_us'},
     {name: 'Акции', ref: ''},
-    {name: 'Наши работы', ref: ''},
+    {name: 'Наши работы', ref: 'performance'},
     {name: 'Прайс', ref: ''},
     {name: 'Франшиза', ref: ''}
 ];
@@ -70,8 +70,8 @@ function DrawerAppBar(props) {
             <List>
                 {navItems.map(({name, ref}) => (
                     <ListItem key={name} disablePadding>
-                        <ListItemButton sx={{textAlign: 'center'}}>
-                            <ListItemText  primary={name}/>
+                        <ListItemButton href={`#${ref}`} sx={{textAlign: 'center'}}>
+                            <ListItemText primary={name}/>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -155,18 +155,24 @@ function DrawerAppBar(props) {
                     {drawer}
                 </Drawer>
             </nav>
-            <Box component="main" sx={{margin: 'auto'}}>
+            <Box sx={{m: 'auto'}}>
                 <Toolbar/>
-                <Box>
-                    <img style={{
-                        width: '100%',
-                        height: '550px',
-                        objectFit: 'cover',
-                        overflow: 'hidden',
-                        p: 0
-                    }}
-                         src="https://photo-cdn2.icons8.com/GU3GVkXyR8gZBEfXb2JoThawSbPnCLUoTn7lR8DDlGM/rs:fit:1608:1072/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi8wMDdiNzE3YzZk/MmY0MGUzOGM0YzY4/YmM3ZTRkOWUyMi5q/cGc.jpg"
-                         className="App-logo" alt="logo"/>
+                <Box className='landing-image-box'>
+                    <div className='landing-image'>
+                        <img style={{
+                            objectFit: 'cover',
+                            width: '100%',
+                            height: '100%',
+                            display: 'block',
+                            flexShrink: 0,
+                            flexGrow: 0,
+                            overflow: 'hidden',
+                            p: 0
+                        }}
+                             src={process.env.PUBLIC_URL + '/landing.jpg'}
+                             className="App-logo" alt="logo"/>
+                    </div>
+
                     <img name='logo1'
                          style={{
                              position: 'absolute',
@@ -180,7 +186,8 @@ function DrawerAppBar(props) {
                              p: 0,
                          }}
                          src={process.env.PUBLIC_URL + '/logoN.png'} className="App-logo" alt="logo"/>
-                    <Button sx={{
+                    <Button className='sign-up-button' sx={{
+                        background: '#939569',
                         position: 'absolute',
                         top: '40%',
                         left: '50%',
@@ -191,55 +198,97 @@ function DrawerAppBar(props) {
                 </Box>
 
 
-                <Box sx={{margin: 'auto', width: '50%'}}>
+                <Box className='about-us-box' id='about_us'>
+                    <div className='stacked-images'>
+                        <img
+                            className="logo1"
+                            name='logo1'
+                            src={img1}
+                            alt="logo"
+                        />
+                        {/*<img*/}
+                        {/*    className="logo2"*/}
+                        {/*    name='logo2'*/}
 
-                    <img
-                        name='logo1'
-                        style={{
-                            height: 200,
-                            width: 200,
-                            objectFit: 'cover',
-                        }}
-                        src={process.env.PUBLIC_URL + '/logoN.png'}
-                        className="App-logo"
-                        alt="logo"
-                    />
-                    <div>
-                        <h3 style={{paddingTop: '5rem'}} id='about_us'>O нас</h3>
-                        <Typography>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент
-                            мог насладиться моментом ухода за собой 💃.</Typography>
-                        <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
-                        <Typography>У нас работают опытные мастера маникюра и визажисты, которые следят за последними
-                            тенденциями в индустрии красоты 💅.</Typography>
-                        <h5 style={{paddingTop: '10px'}}>Наши услуги</h5>
-                        <Typography>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский,
-                            аппаратный маникюр, дизайн ногтей и профессиональный макияж.</Typography>
+                        {/*    src={img2}*/}
+                        {/*    alt="logo"*/}
+                        {/*/>*/}
+                        {/*<img*/}
+                        {/*    className="logo3"*/}
+                        {/*    name='logo3'*/}
+
+                        {/*    src={img3}*/}
+                        {/*    alt="logo"*/}
+                        {/*/>*/}
                     </div>
+                    <div style={{width: '20rem'}} >
+                        <h3 className='about_us_title' >O нас</h3>
+                        <p>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент
+                            мог насладиться моментом ухода за собой 💃.</p>
+                        <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
+                        <p>У нас работают опытные мастера маникюра и визажисты, которые следят за последними
+                            тенденциями в индустрии красоты 💅.</p>
+                        <h5 style={{paddingTop: '10px'}}>Наши услуги</h5>
+                        <p>Мы предлагаем широкий выбор маникюрных услуг, включая классический, европейский,
+                            аппаратный маникюр, дизайн ногтей и профессиональный макияж.</p>
+                    </div>
+
                 </Box>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+
 
                 {/*филиалы*/}
-                <Box className='places'>
-                    <Stack
-                        direction={{xs: 'column', sm: 'row'}}
-                        spacing={{xs: 1, sm: 2, md: 4}}
-                    >
-                        <ImageSlider images={IMAGES}/>
-                        <div className='place-text'>
-                            <p className='place-text-address'>ул. Красная Пресня 13</p>
-                            <p className='place-text-phone'>Телефон: +77777777777</p>
-                            <p className='place-text-inst'>Инстаграм: @LizDoesBiz</p>
-                            <Button variant='contained' >Записаться</Button>
+                <div className='places-box'>
+                    <h1>Наши филиалы</h1>
+                    <Box className='places'>
+                        <div style={{paddingBottom: '3.5rem'}}>
+                            <ImageSlider images={IMAGES}/>
                         </div>
-                    </Stack>
+                        <div>
+                            <div className='place-text'>
+                                <p className='place-text-address'>ул. Красная Пресня 13</p>
+                                <p className='place-text-phone'>Телефон: +77777777777</p>
+                                <p className='place-text-inst'>Инстаграм: @LizDoesBiz</p>
+                                <Button color='inherit' className='sign-up-button' sx={{background: '#939569'}}
+                                        variant='contained'>Записаться</Button>
+                            </div>
+                        </div>
+                    </Box>
+                </div>
 
+                <Box className='performance-box' id='performance'>
+                    <p className='performance-title'>Наши работы</p>
+                    <p className='performance-text'>Высококлассные мастера, реализуют все ваши пожелания</p>
+                    <p className='performance-text'>и самые яркие идеи в лучшем виде</p>
+                    <Box sx={{ width: '100%'}}>
+                        <ImageList sx={{ width: '100%', paddingBottom: '3rem' }} cols={4}>
+                            {imagesPerf.map((item) => (
+                                <ImageListItem key={item.img}>
+                                    <img style={{maxHeight: '25rem'}}
+                                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                        src={`${item.img}?w=248&fit=crop&auto=format`}
+                                        alt={item.title}
+                                        loading="lazy"
+                                    />
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                    </Box>
+                    <div className='performance-links'>
+                        <p>
+                            Понаблюдать за нами и посмотреть больше работ,
+                        </p>
+                        <p>
+                            вы можете в наших соц.сетях
+                        </p>
+                        <List sx={{flexGrow: 1, pb: '5rem', display: {xs: 'none', sm: 'block'}}}>
+                            <IconButton sx={{color: '#939569', pr: '2rem'}}><TelegramIcon fontSize='large'/></IconButton>
+                            <IconButton sx={{color: '#939569', pl: '2rem'}}><InstagramIcon fontSize='large'/></IconButton>
+                        </List>
+                    </div>
 
                 </Box>
+
+
                 <br/>
                 <br/>
                 <br/>
@@ -272,3 +321,54 @@ DrawerAppBar.propTypes = {
 };
 
 export default DrawerAppBar;
+
+const imagesPerf = [
+    {
+        img: 'https://optim.tildacdn.com/tild3764-6563-4831-b065-393535626361/-/format/webp/IMG_6598.JPG',
+        title: 'Books',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild6666-6136-4662-b430-623465366665/-2.jpg',
+        title: 'Sink',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild3132-6236-4332-a662-383834663337/IMG_1509.JPG',
+        title: 'Kitchen',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild3564-6538-4363-a638-373266303664/IMG_6597.JPG',
+        title: 'Blinds',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild6139-6434-4530-a163-663636616232/___Shdema_Haviv_____.jpg',
+        title: 'Chairs',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild3063-6136-4531-a339-396331643461/IMG_8231.jpg',
+        title: 'Laptop',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild6438-6531-4537-a565-316161666161/f6cc598e-85b3-4ec2-a.JPG',
+        title: 'Doors',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild6464-6362-4561-b434-313163633437/IMG_8230.jpg',
+        title: 'Coffee',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild3361-6362-4961-a166-656131373333/IMG_1472.JPG',
+        title: 'Storage',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild6666-6136-4662-b430-623465366665/-2.jpg',
+        title: 'Candle',
+    },
+    {
+        img: 'https://static.tildacdn.com/tild3861-6438-4936-a135-656338656633/IMG_7942.JPG',
+        title: 'Coffee table',
+    },
+    {
+        img: 'https://optim.tildacdn.com/tild6139-6434-4530-a163-663636616232/-/format/webp/___Shdema_Haviv_____.jpg',
+        title: 'Coffee',
+    },
+];
