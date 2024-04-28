@@ -19,7 +19,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import './MainBar.css';
 import {ImageSlider} from "./ImageSlider.tsx";
-import {ImageList, ImageListItem} from "@mui/material";
+import {ImageList, ImageListItem, ImageListItemBar} from "@mui/material";
 
 const drawerWidth = 240;
 const navItems = [
@@ -157,45 +157,45 @@ function DrawerAppBar(props) {
             </nav>
             <Box sx={{m: 'auto'}}>
                 <Toolbar/>
-                <Box className='landing-image-box'>
-                    <div className='landing-image'>
-                        <img style={{
-                            objectFit: 'cover',
-                            width: '100%',
-                            height: '100%',
-                            display: 'block',
-                            flexShrink: 0,
-                            flexGrow: 0,
-                            overflow: 'hidden',
-                            p: 0
-                        }}
-                             src={process.env.PUBLIC_URL + '/landing.jpg'}
-                             className="App-logo" alt="logo"/>
-                    </div>
+                {/*<Box className='landing-image-box'>*/}
+                {/*    <div className='landing-image'>*/}
+                {/*        <img style={{*/}
+                {/*            objectFit: 'cover',*/}
+                {/*            width: '100%',*/}
+                {/*            height: '100%',*/}
+                {/*            display: 'block',*/}
+                {/*            flexShrink: 0,*/}
+                {/*            flexGrow: 0,*/}
+                {/*            overflow: 'hidden',*/}
+                {/*            p: 0*/}
+                {/*        }}*/}
+                {/*             src={process.env.PUBLIC_URL + '/landing.jpg'}*/}
+                {/*             className="App-logo" alt="logo"/>*/}
+                {/*    </div>*/}
 
-                    <img name='logo1'
-                         style={{
-                             position: 'absolute',
-                             top: '20%',
-                             left: '50%',
-                             transform: 'translate(-50%, -50%)',
-                             width: '200px',
-                             height: '200px',
-                             objectFit: 'cover',
-                             overflow: 'hidden',
-                             p: 0,
-                         }}
-                         src={process.env.PUBLIC_URL + '/logoN.png'} className="App-logo" alt="logo"/>
-                    <Button className='sign-up-button' sx={{
-                        background: '#939569',
-                        position: 'absolute',
-                        top: '40%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        overflow: 'hidden',
-                        p: 0
-                    }} variant="contained" size="medium">Онлайн запись</Button>
-                </Box>
+                {/*    <img name='logo1'*/}
+                {/*         style={{*/}
+                {/*             position: 'absolute',*/}
+                {/*             top: '20%',*/}
+                {/*             left: '50%',*/}
+                {/*             transform: 'translate(-50%, -50%)',*/}
+                {/*             width: '200px',*/}
+                {/*             height: '200px',*/}
+                {/*             objectFit: 'cover',*/}
+                {/*             overflow: 'hidden',*/}
+                {/*             p: 0,*/}
+                {/*         }}*/}
+                {/*         src={process.env.PUBLIC_URL + '/logoN.png'} className="App-logo" alt="logo"/>*/}
+                {/*    <Button className='sign-up-button' sx={{*/}
+                {/*        background: '#939569',*/}
+                {/*        position: 'absolute',*/}
+                {/*        top: '40%',*/}
+                {/*        left: '50%',*/}
+                {/*        transform: 'translate(-50%, -50%)',*/}
+                {/*        overflow: 'hidden',*/}
+                {/*        p: 0*/}
+                {/*    }} variant="contained" size="medium">Онлайн запись</Button>*/}
+                {/*</Box>*/}
 
 
                 <Box className='about-us-box' id='about_us'>
@@ -221,8 +221,8 @@ function DrawerAppBar(props) {
                         {/*    alt="logo"*/}
                         {/*/>*/}
                     </div>
-                    <div style={{width: '20rem'}} >
-                        <h3 className='about_us_title' >O нас</h3>
+                    <div style={{width: '20rem'}}>
+                        <h3 className='about_us_title'>O нас</h3>
                         <p>Мы создаем уютные условия и предлагаем высококлассный уход 👑, чтобы каждый клиент
                             мог насладиться моментом ухода за собой 💃.</p>
                         <h5 style={{paddingTop: '10px'}}>Наша миссия</h5>
@@ -237,37 +237,40 @@ function DrawerAppBar(props) {
 
 
                 {/*филиалы*/}
-                <div className='places-box'>
-                    <h1>Наши филиалы</h1>
-                    <Box className='places'>
-                        <div style={{paddingBottom: '3.5rem'}}>
-                            <ImageSlider images={IMAGES}/>
-                        </div>
-                        <div>
-                            <div className='place-text'>
-                                <p className='place-text-address'>ул. Красная Пресня 13</p>
-                                <p className='place-text-phone'>Телефон: +77777777777</p>
-                                <p className='place-text-inst'>Инстаграм: @LizDoesBiz</p>
-                                <Button color='inherit' className='sign-up-button' sx={{background: '#939569'}}
-                                        variant='contained'>Записаться</Button>
+                <Box>
+                    <div className='places-box'>
+                        <h1>Наши филиалы</h1>
+                        <Box className='places'>
+                            <div style={{paddingBottom: '3.5rem'}}>
+                                <ImageSlider images={IMAGES}/>
                             </div>
-                        </div>
-                    </Box>
-                </div>
+                            <div>
+                                <div className='place-text'>
+                                    <p className='place-text-address'>ул. Красная Пресня 13</p>
+                                    <p className='place-text-phone'>Телефон: +77777777777</p>
+                                    <p className='place-text-inst'>Инстаграм: @LizDoesBiz</p>
+                                    <Button color='inherit' className='sign-up-button' sx={{background: '#939569'}}
+                                            variant='contained'>Записаться</Button>
+                                </div>
+                            </div>
+                        </Box>
+                    </div>
+                </Box>
+
 
                 <Box className='performance-box' id='performance'>
                     <p className='performance-title'>Наши работы</p>
                     <p className='performance-text'>Высококлассные мастера, реализуют все ваши пожелания</p>
                     <p className='performance-text'>и самые яркие идеи в лучшем виде</p>
-                    <Box sx={{ width: '100%'}}>
-                        <ImageList sx={{ width: '100%', paddingBottom: '3rem' }} cols={4}>
+                    <Box sx={{width: '100%'}}>
+                        <ImageList sx={{width: '100%', paddingBottom: '3rem'}} cols={4}>
                             {imagesPerf.map((item) => (
                                 <ImageListItem key={item.img}>
                                     <img style={{maxHeight: '25rem'}}
-                                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                                        alt={item.title}
-                                        loading="lazy"
+                                         srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                         src={`${item.img}?w=248&fit=crop&auto=format`}
+                                         alt={item.title}
+                                         loading="lazy"
                                     />
                                 </ImageListItem>
                             ))}
@@ -280,33 +283,29 @@ function DrawerAppBar(props) {
                         <p>
                             вы можете в наших соц.сетях
                         </p>
-                        <List sx={{flexGrow: 1, pb: '5rem', display: {xs: 'none', sm: 'block'}}}>
-                            <IconButton sx={{color: '#939569', pr: '2rem'}}><TelegramIcon fontSize='large'/></IconButton>
-                            <IconButton sx={{color: '#939569', pl: '2rem'}}><InstagramIcon fontSize='large'/></IconButton>
-                        </List>
+                        <div style={{paddingBottom: '5rem'}}>
+                            <IconButton sx={{color: '#939569', pr: '2rem'}}><TelegramIcon
+                                fontSize='large'/></IconButton>
+                            <IconButton sx={{color: '#939569', pl: '2rem'}}><InstagramIcon
+                                fontSize='large'/></IconButton>
+                        </div>
                     </div>
-
                 </Box>
 
 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                Наши работы
-                высококласные и тд и тп
-                List image
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                Наши самые выгодные
-                специальные предложения:
-                Абонементы:
+                <Box className='ad-block'>
+                    <div style={{paddingTop: '5rem'}}>
+                        <p className='ad-block-title'>Наши самые выгодные</p>
+                        <p className='ad-block-title'>специальные предложения:</p>
+                        <p className='ad-block-disc'>Абонементы:</p>
+                    </div>
+                    <Box>
+
+                    </Box>
+
+
+                </Box>
+
             </Box>
         </Box>
     );
@@ -371,4 +370,31 @@ const imagesPerf = [
         img: 'https://optim.tildacdn.com/tild6139-6434-4530-a163-663636616232/-/format/webp/___Shdema_Haviv_____.jpg',
         title: 'Coffee',
     },
+];
+
+
+const discountData = [
+    {
+        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+        title: 'Сертификаты для друзей 0 р',
+        disc: '@bkristastucchio',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+        title: 'Акция готовится, следите за обновлениями',
+        disc: '@rollelflex_graphy726',
+    }
+];
+
+const adviceData = [
+    {
+        img: 'https://optim.tildacdn.com/tild6330-3666-4932-b532-396638396435/-/resize/460x/-/format/webp/photo_2022-08-13_112.jpeg',
+        title: 'Акция готовится, следите за обновлениями',
+        disc: '@bkristastucchio',
+    },
+    {
+        img: 'https://optim.tildacdn.com/tild6234-6161-4738-a439-373631653232/-/resize/460x/-/format/webp/IMG_7943.JPG',
+        title: 'Акция: скидка в день рождения 15% на ВСЕ услуги',
+        disc: '@rollelflex_graphy726',
+    }
 ];
